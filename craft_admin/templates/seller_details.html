@@ -1,0 +1,29 @@
+{% extends 'admin_dashboard.html' %} {% block content %}{% load static %}
+<div class="container">
+    <center>
+        <h1>Seller Details</h1>
+    </center>
+    <br>
+    <hr>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Seller Email</th>
+                <th scope="col">Seller Number</th>
+                <th scope="col">Seller Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in details %}
+            <tr>
+                <th scope="row">{{i.id}}</th>
+                <td>{{i.seller_email}}</td>
+                <td>{{i.seller_mobile_no}}</td>
+                <td><a class="btn btn-outline-danger" href="seller_permission/{{i.id}}" role="button">{{i.seller_status}}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>{% endblock %}

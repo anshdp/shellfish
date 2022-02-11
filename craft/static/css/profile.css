@@ -1,0 +1,17 @@
+.div-align {
+    border: 3px solid teal;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.edit_button {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.edit_button>.edit,
+.logout {
+    width: 250px;
+    margin: 20px;
+}

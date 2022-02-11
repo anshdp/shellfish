@@ -1,0 +1,81 @@
+{% extends 'dashbord.html' %} {% block content %}{% load static %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script type="text/javascript" src="{% static 'js/form_validation.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="log ">
+            <form name="signform" method="POST" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <span class="title">create account</span>
+                <div class="form-group">
+
+                    <input type="number" class="form-control" id="n1" name="no" aria-describedby="nameHelp" placeholder="Enter mobile no">
+                    <b for="no" id="label1"></b>
+                </div>
+                <div class="form-group">
+
+                    <input type="email" class="form-control" id="Email1" onchange="check()" name="email" aria-describedby="emailHelp" placeholder="Your Email">
+                    <!-- <label for="email" id="label2"></label> -->
+                    <b for="email" id="label2"></b>
+                </div>
+                <div class="form-group">
+
+                    <input type="password" class="form-control" id="pass1" name="password_first" placeholder="Password">
+                    <b for="password_first" id="label3"></b>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="pass2" name="password_conf" placeholder="Confirm Password">
+                    <b for="password_conf" id="label4"></b>
+                </div>
+
+                <button type="submit" class="btn butt">Sign Up </button>
+
+
+                <div class="text-center-2">
+                    <span class="txt2">
+                     Already have an account?
+                    </span>
+
+                    <a class="txt3" href="login">
+                        Login
+                    </a>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(() => {
+        console.log("ready")
+        $('#Email1').change(() => {
+            console.log($('#Email1').val())
+            $.ajax({
+                url: '/craft/checkExist',
+                type: 'post',
+                data: {
+                    Email1: $('#Email1').val()
+                },
+                success: function(response) {
+
+                    if (response.isExist == true) {
+                        document.getElementById("label2").style.color = "#ff0000";
+                        document.getElementById("label2").innerHTML = 'Email already exist';
+                        $(':input[type="submit"]').prop('disabled', true);
+                    } else {
+                        document.getElementById("label2").innerHTML = '';
+                        $(':input[type="submit"]').prop('disabled', false);
+
+                    }
+                }
+            })
+        })
+    })
+</script>
+
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends 'dashbord.html' %} {% block content %}{% load static %}
+<div class="container">
+  <div class="row">
+    {% for product in product_objects %}
+    <div class="col-md-3">
+      <div class="card-deck">
+        <div class="card">
+          <img src="{{product.image}}" class="card-img-top" alt="..." height="300">
+          <div class="card-body">
+            <h5 class="card-title">{{product.title}}</h5>
+            <h6 class="card-title">Rs. {{product.discount_price}}</h6>
+            <del>Rs. {{product.price}}</del>
+          </div>
+          <div>
+            <a href="{{product.id}}" class="btn btn-warning">View</a>
+            <a href="" class="btn" style="border: 1px solid; background: #41929B; color: #fff;"><i class="far fa-heart fa-sm " id="heart "></i>
+              Whishlist
+            </a>
+
+          </div>
+          
+
+
+          
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<br>
+
+
+
+
+
+
+
+
+<!-- {{product.catogory}}
+{{product.description}} -->
+
+
+
+
+<!-- <div class="container-fluid">
+<div>
+    
+
+</div>
+<hr>
+<div class="row">
+    <div class="col-lg-2">
+         <div class="form-check" style="background-color: aqua;">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              Men
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              Women
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
+            <label class="form-check-label" for="exampleRadios3">
+              Kids
+            </label>
+          </div>
+
+          <hr>
+
+          <div class="form-check">
+              <h6>Catogory</h6>
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                Shirts
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+            <label class="form-check-label" for="defaultCheck2">
+              Jeans
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+              Casual Shoes 
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+            <label class="form-check-label" for="defaultCheck2">
+              Saree
+            </label>
+          </div>
+
+          <hr>
+          <div class="form-check">
+            <h6>BRAND</h6>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+              Pepe Jeans
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            Wrangler
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Levis 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            UCB
+          </label>
+        </div>
+
+        <hr>
+        <div class="form-check">
+            <h6>PRICE</h6>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+              0-500
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            500-1000
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+             1000-1500 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            Above 1500
+          </label>
+        </div>
+
+        <hr>
+
+        <div class="form-check">
+            <h6>COLOR</h6>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Black
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            White
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            Red  
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            Green
+          </label>
+        </div>
+
+        <hr>
+
+        <div class="form-check">
+            <h6>DISCOUNT</h6>
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+              20 Above
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            40 Above
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+          <label class="form-check-label" for="defaultCheck1">
+            60 Above 
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+          <label class="form-check-label" for="defaultCheck2">
+            80 Above
+          </label>
+        </div>
+
+    </div>
+    <div class="col-lg-2">
+      
+        <div class="card-deck">
+            <div class="card">
+              <a href="product_details"><img src="{%static 'images/card1.webp'%}" class="card-img-top" alt="..." height="300"></a>
+              <div>
+                <h5 class="card-title">Brand name</h5>
+                <h6 class="card-title">Product name</h6>
+                <p>Price</p>
+              </div>
+                <a href="" class="btn" style="border: 1px solid;"><i class="far fa-heart fa-sm " id="heart "></i>
+                  Whishlist
+                </a>
+              
+            </div>
+          </div>
+        
+    </div>
+</div>
+</div> -->
+
+
+    
+
+
+
+{% endblock %}

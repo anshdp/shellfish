@@ -1,0 +1,124 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <!-- <script type="text/javascript" src="{% static 'js/seller_form_validation.js'%}"></script> -->
+</head>
+
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="log ">
+                <h3>Welcome to Craftist</h3>
+                <small id="emailHelp" class="form-text text-muted">Create your account to start selling.</small>
+                <br>
+                <form name="sellerSignForm" method="POST" onsubmit="return seller_validate_form()">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="sellerInputNumber" aria-describedby="emailHelp" placeholder="Mobile Number" name="sellerNumber">
+                        <b for="no" id="labelForNumber"></b>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="sellerInputEmail" placeholder="Email" name="sellerEmail">
+                        <b for="no" id="labelForEmail"></b>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="sellerInputPassword" placeholder="Password" name="sellerPassword">
+                        <b for="no" id="labelForPassword"></b>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="sellerInputPassword1" placeholder="Confirm Password">
+                        <b for="no" id="labelForPassword1"></b>
+                    </div>
+                    <button type="submit" class="btn butt" style="background-color: teal;">Sign Up</button>
+                    <div class="text-center-2">
+                        <span class="txt2">
+                         Already have an account?
+                        </span>
+                        <a class="txt3" href="seller_login" style="color: teal; text-decoration: none;">
+                            Login
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function seller_validate_form() {
+        let seller_phone = document.forms["sellerSignForm"]["sellerInputNumber"].value;
+        let seller_mail = document.forms["sellerSignForm"]["sellerInputEmail"].value;
+        let seller_pass1 = document.forms["sellerSignForm"]["sellerInputPassword"].value;
+        let seller_pass2 = document.forms["sellerSignForm"]["sellerInputPassword1"].value;
+        let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        var phoneNo = /^\d{10}$/;
+        console.log(seller_phone);
+        console.log(seller_mail);
+        console.log(seller_pass1);
+        console.log(seller_pass2);
+        // mobile no validation
+        if (seller_phone == "") {
+            document.getElementById("labelForNumber").style.color = "#ff0000";
+            document.getElementById("sellerInputNumber").style.borderColor = "#ff0000";
+            document.getElementById("labelForNumber").innerHTML = 'Mobile no must be filled out';
+            return false;
+        } else if (seller_phone.match(phoneNo)) {
+            document.getElementById("labelForNumber").innerHTML = '';
+            document.getElementById("sellerInputNumber").style.borderColor = "black";
+        } else {
+            document.getElementById("labelForNumber").style.color = "#ff0000";
+            document.getElementById("sellerInputNumber").style.borderColor = "#ff0000";
+            document.getElementById("labelForNumber").innerHTML = 'Enter a valid mobile no';
+            return false;
+        }
+        //  email validation
+        if (seller_mail == "") {
+            document.getElementById("labelForEmail").style.color = "#ff0000";
+            document.getElementById("sellerInputEmail").style.borderColor = "#ff0000";
+            document.getElementById("labelForEmail").innerHTML = 'Email must be filled out';
+            return false;
+        } else if (seller_mail.match(mailFormat)) {
+            document.getElementById("labelForEmail").innerHTML = '';
+            document.getElementById("sellerInputEmail").style.borderColor = "black";
+        } else {
+            document.getElementById("labelForEmail").style.color = "#ff0000";
+            document.getElementById("sellerInputEmail").style.borderColor = "#ff0000";
+            document.getElementById("labelForEmail").innerHTML = 'Enetr a valid Email  ';
+        }
+        // //password validation
+        if (seller_pass1 == "") {
+            document.getElementById("labelForPassword").style.color = "#ff0000";
+            document.getElementById("sellerInputPassword").style.borderColor = "#ff0000";
+            document.getElementById("labelForPassword").innerHTML = 'Password must filled out';
+            return false;
+        } else if (seller_pass1.length < 6) {
+            document.getElementById("labelForPassword").style.color = "#ff0000";
+            document.getElementById("labelForPassword").innerHTML = 'Password must be 6 charachters';
+            return false;
+        } else {
+            document.getElementById("labelForPassword").innerHTML = '';
+            document.getElementById("sellerInputPassword").style.borderColor = "black";
+        }
+        // //confirm password validation
+        if (seller_pass2 != seller_pass1) {
+            document.getElementById("labelForPassword1").style.color = "#ff0000";
+            document.getElementById("sellerInputPassword1").style.borderColor = "#ff0000";
+            document.getElementById("labelForPassword1").innerHTML = 'Password must be same';
+            return false;
+        } else {
+            document.getElementById("labelForPassword1").innerHTML = '';
+            document.getElementById("sellerInputPassword1").style.borderColor = "black";
+        }
+    }
+    //return in place holder----
+    //document.getElementsByName("username")[0].placeholder = 'Username must be filled out';
+</script>
+
+</html>
