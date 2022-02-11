@@ -1,0 +1,1 @@
+web: gunicorn craftist.wsgi --log-file -
