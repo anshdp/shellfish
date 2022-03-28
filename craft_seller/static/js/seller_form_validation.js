@@ -66,6 +66,3 @@ function seller_validate_form() {
         document.getElementById("pass2").style.borderColor = "black";
     }
 }
-
-//return in place holder----
-// document.getElementsByName("username")[0].placeholder = 'Username must be filled out';

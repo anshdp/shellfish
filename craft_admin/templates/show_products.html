@@ -1,0 +1,35 @@
+{% extends 'admin_dashboard.html' %} {% block content %}{% load static %}
+<div class="container">
+    <center>
+        <h1>Products Details</h1>
+    </center>
+    <div class="row m-5">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Product Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Seller Name</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Delete Product</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <td><img src="/craft_seller/media/{{i.fishImage}}" class="card-img-top" alt="..." style="width: 100px;"></td>
+                    <td>{{i.fishName}}</td>
+                    <td>{{i.seller.seller_email}}</td>
+                    <td>{{i.fishPrice}}</td>
+                    <td><a href="#" class="btn btn-outline-danger btn-sm" onclick="delete_product( '{{i.id}}' )">Delete Product</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

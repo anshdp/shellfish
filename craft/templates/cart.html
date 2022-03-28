@@ -1,0 +1,160 @@
+{% extends 'dashbord.html' %} {% block content %}{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<div class="container">
+
+    <div class="row">
+
+
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>My Cart( {{totalCount}} Items )</h3>
+                </div>
+                <div class="col-lg-4">
+                    <h4>Total Rs: {{totalDiscountAmount}} </h4>
+                </div>
+            </div>
+            <br>
+            <hr> {% for i in items %}
+            <div class="row">
+                <div class="col-lg-2 pl-2 pt-5 pr-3">
+                    <img src="/craft_seller/media/{{i.product.fishImage}}" alt="" width="100px">
+                </div>
+                <div class="col-lg-10 p-5">
+                    <b>Rs:{{i.product.fishDiscountPrice}}</b>
+                    <p>{{i.product.fishName}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates at voluptas dolore autem impedit excepturi recusandae expedita dicta culpa ipsa. Exercitationem quas nisi accusantium. Ullam eligendi nemo repellendus
+                        fugiat. Optio?
+                    </p>
+                    <label for="quantity">Quantity</label>
+                    <select name="" id="quantity">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                        <option value="">5</option>
+                        <option value="">6</option>
+                    </select><br>
+                    <button type="button" class="btn btn-outline-info btn-sm">Save for later</button>
+
+                </div>
+            </div>
+            {% endfor %}
+
+            <hr>
+            <a class="btn btn-outline-info btn-sm" href="#" role="button">Continue Shopping</a>
+        </div>
+
+        <div class="col-lg-6 p-5">
+            <div class="row">
+                <!-- <div class="col-lg-12">
+                    <h5>YOUR INFORMATION</h5>
+                    <hr>
+                </div> -->
+                <div class="col-lg-12">
+                    <H5>Price Details</H5>
+                    <hr>
+                    <table>
+                        <tr>
+                            <td>Bag Total:</td>
+                            <td><b> <strike>{{totalAmount}}</strike></b><br> </td>
+                        </tr>
+                        <tr style="color: red;">
+                            <td>Bag Discount Price: </td>
+                            <td><b>{{totalDiscountAmount}}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Estimated Tax</td>
+                        </tr>
+                        <tr>
+                            <td>Coupon Discount</td>
+                        </tr>
+                        <tr>
+                            <td>Order Total</td>
+                        </tr>
+                    </table>
+                    <button type="button" class="btn btn-success btn-lg btn-block" onclick="pay(' {{ totalDiscountAmount }} ')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<br>
+
+
+
+<script>
+    function pay(amount) {
+        console.log(amount);
+        $.ajax({
+            url: '/craft/orderProduct',
+            type: 'POST',
+            data: {
+                totalAmount: amount * 100,
+            },
+            success: function(response) {
+                console.log("payment_id = " + response.id);
+                amount = response.amount
+                var options = {
+                    "key": "rzp_test_8QBbmYcRc73Nly", // Enter the Key ID generated from the Dashboard
+                    "amount": response.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                    "currency": "INR",
+                    "name": "Cyber_square",
+                    "description": "Place order",
+                    "image": "https://cs-ecom.herokuapp.com/static/images/cs_ecom_logo.png",
+                    "id": "1234",
+                    "order_id": response.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                    "handler": function(response) {
+
+                        payment_id = response.razorpay_payment_id
+                        order_id = response.razorpay_order_id
+                        paymentAmount = amount
+                        console.log(paymentAmount)
+                        signature = response.razorpay_signature
+
+                        updatePayment(payment_id, order_id, signature, paymentAmount)
+
+                    },
+                    "theme": {
+                        "color": "#3399cc"
+                    }
+                };
+                var rzp1 = new Razorpay(options);
+                rzp1.on('payment.failed', function(response) {
+                    alert(response.error.code);
+                    alert(response.error.description);
+                    alert(response.error.source);
+                    alert(response.error.step);
+                    alert(response.error.reason);
+                    alert(response.error.metadata.payment_id);
+                });
+                rzp1.open();
+            }
+        })
+    }
+
+    function updatePayment(paymentId, orderId, signature, paymentAmount) {
+        $.ajax({
+            url: '/craft/updatePayment',
+            type: 'post',
+            data: {
+                paymentId,
+                orderId,
+                signature,
+                paymentAmount
+            },
+            success: function(response) {
+                alert("Your order placed successfully")
+                window.location.reload();
+            }
+        })
+    }
+</script>
+
+
+
+{% endblock %}

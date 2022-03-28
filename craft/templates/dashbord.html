@@ -21,12 +21,11 @@
     <div class="container-fluid">
         <div class="row">
 
-
             <div class="col-lg-7">
-
                 <nav class="navbar navbar-expand-lg navbar-light">
-
-                    <a class="navbar-brand" href="#">logo</a>
+                    <a class="navbar-brand" href="#">
+                        <h5>Mermaid</h5>
+                    </a>
                     <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 
                        <span class="navbar-toggler-icon"></span>
@@ -39,7 +38,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="product">All catogory</a>
+                                <a class="nav-link" href="/craft/product">All catogory</a>
                             </li>
 
                             <li class="nav-item">
@@ -50,23 +49,20 @@
                                 <a class="nav-link" href="product_details">Food Products</i>
                                 </a>
                             </li>
-
-
                             <li class="nav-item">
                                 <a class="nav-link" href="/craft_seller/become_seller">Become a seller</a>
                             </li>
                         </ul>
                     </div>
+                </nav>
             </div>
-            </nav>
+
+
             <div class="col-lg-3">
                 <form action="">
                     <div class="input-container">
-                        <span class="material-icons icons">
-                    search
-                
-                </span>
-                        <input class="input-field" type="text" placeholder="Search for products,brands and more" name="usrnm">
+                        <span class="material-icons icons">search</span>
+                        <input class="input-field" type="text" placeholder="Search for products,category and more" name="">
                     </div>
                 </form>
             </div>
@@ -80,42 +76,28 @@
                     </a>
                 </div>
                 <div class="grouping ">
-                    <a href=" " class="decor ">
+                    <a href="wishlist_page" class="decor ">
                         <i class="far fa-heart fa-sm " id="heart "></i>
-                        <label for="heart " class="langDescription " id="labelforheart ">Whishlist</label>
+                        <label for="heart " class="langDescription " id="labelforheart ">Wishlist</label>
                     </a>
-
                 </div>
                 <div class="grouping ">
-                    <a href=" " class="decor ">
+                    <a href="/craft/cart" class="decor ">
                         <i class="fas fa-shopping-bag fa-sm " id="cart "></i>
                         <label for="cart " class="langDescription " id="labelforcart ">Bag</label>
                     </a>
-
                 </div>
-
-
-
-
-
             </div>
+
         </div>
 
     </div>
 
-    </div>
 
 
-
-
-
-
-
-
-    </div>
-    </div>
     <br> {% block content%} {% endblock %}
     <br>
+
     <div class="footer">
         <div class="container">
             <div class="row">
@@ -182,20 +164,15 @@
 
 
 
-    <!-- Optional JavaScript; choose one of the two! -->
 
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js " integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns " crossorigin="anonymous "></script>
     <script src="https://kit.fontawesome.com/c26cd2166c.js "></script>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script type="text/javascript" src="{% static 'js/add_to_cart.js' %}"></script>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js " integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN " crossorigin="anonymous "></script> -->
 
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js " integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF " crossorigin="anonymous "></script> -->
 
 </body>
 

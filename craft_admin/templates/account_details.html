@@ -1,0 +1,106 @@
+{% extends 'admin_dashboard.html' %} {% block content %}{% load static %}
+
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-lg-12 pr-5">
+            <p><small class="text-muted">{{data.username}}</small></p>
+            <a href="" data-toggle="modal" data-target="#exampleModal">
+                <p><small class="text-muted">Change password</small></p>
+            </a>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Old Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword" name="oldPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" name="newPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Confirm Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword2">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+
+                            <button type="button" class="btn btn-success" onclick="change_password()">Change Password</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-12 m-5">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="card text-white bg-success mt-5" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h5>Users</h5>
+                        </div>
+                        <div class="card-body">
+                            <b>Total users</b><br>
+                            <b>Total </b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card text-white bg-warning mt-5" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h5>Sellers</h5>
+                        </div>
+                        <div class="card-body">
+                            <b>Total Seller</b><br>
+                            <b>Pending Sellers</b><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card text-white bg-success mt-5" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h5>Products</h5>
+                        </div>
+                        <div class="card-body">
+                            <b>total Product</b><br>
+                            <b>Deleted Products</b>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card text-white bg-info mt-5" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h5>Orders</h5>
+                        </div>
+                        <div class="card-body">
+                            <b>Pending Orders</b><br>
+                            <b>order In progress</b><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="card text-white bg-danger mt-5" style="max-width: 18rem;">
+                        <div class="card-header">
+                            <h5>Sales</h5>
+                        </div>
+                        <div class="card-body">
+                            <b>Total amount</b><br>
+                            <b>refund amount</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

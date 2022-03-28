@@ -1,0 +1,26 @@
+{% extends 'dashbord.html' %} {% block content %}{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="container">
+    <div class="row">
+        {% for i in item %}
+        <div class="col-md-3 pb-4">
+            <div class="card-deck">
+                <div class="card m-3">
+                    <a href="/craft/product_details/{{i.id}}">
+                        <img src="/craft_seller/media/{{i.product.fishImage}}" class="card-img-top" alt="..." height="200">
+                    </a>
+                    <div class="card-body">
+                        <h4>{{i.product.fishName}}</h4>
+                        <h5>Rs.{{i.product.fishDiscountPrice}} <del style="color: grey; font-size: 13px;">Rs. {{i.fishPrice}}</del></h5>
+                        <!-- <a href="/craft/product_details/{{i.id}} " class="btn btn-outline-danger ">View</a> -->
+                        <!-- <a href="" class="btn btn-outline-danger" style="width: 215px;"> <i class="far fa-heart fa-sm " id="heart " onclick="dataInsert()"></i>Wishlist</a> -->
+                        <!-- <button onclick="dataInsert(' {{i.id}} ')">submit</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br> {% endblock %}

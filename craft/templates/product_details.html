@@ -1,55 +1,66 @@
 {% extends 'dashbord.html' %} {% block content %}{% load static %}
 <link rel="stylesheet" href="{% static 'css/product_details.css' %}">
 
-<div class="container-fluid">
+
+
+<div class="container">
     <div class="row">
         <div class="col-md-6">
             <div class="row">
-                <div class="col-md-12">
-                    <a href=""><img src="{{ product_object.image }}" alt="..." height="600"></a>
+                <div class="col-md-6">
+                    <a href=""><img src="/craft_seller/media/{{details.fishImage }}" alt="..." height="300"></a>
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="col-md-6">
             <div class="row">
                 <div class="col-md-12">
-                    <h5 >{{ product_object.title }}</h5>
+                    <h5>{{ details.fishName }}</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h5 >Rs. {{ product_object.discount_price }}</h5>
+                    <h5>Rs.{{details.fishDiscountPrice}} <del style="color: grey; font-size: 13px;">Rs. {{details.fishPrice}}</del></h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>{{ details.fishCatogory }}</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <del>Rs. {{ product_object.price }}</del>
+                    <h5> {{ details.fishDescription }}</h5>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h5 >{{ product_object.catogory }}</h5>
+                    <label for="quantity">Quantity</label>
+                    <select name="" id="quantity">
+                       <option value="">1</option>
+                       <option value="">2</option>
+                       <option value="">3</option>
+                       <option value="">4</option>
+                       <option value="">5</option>
+                       <option value="">6</option>
+                       <option value="">7</option>
+                   </select>
                 </div>
             </div>
+            <br>
             <div class="row">
-                <div class="col-md-12">
-                    <h5 > {{ product_object.description }}</h5>
+                <div class="col-md-12 ">
+                    <button class="btn btn-heart" style="border: 1px solid; background: #f7347a; color: #fff;" onclick="AddToCart(' {{details.id}} ')">
+                        <i class="fa fa-shopping-bag pr-2" id="heart "></i>Add to bag
+                    </button>
+                    <button class="btn btn-bag" style="border: 1px solid;background: #41929B; color: #fff;">
+                        <i class="far fa-heart fa-sm pr-2" id="heart "></i>Wishlist
+                    </button>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="#" class="btn btn-heart"style="border: 1px solid; background: #f7347a; color: #fff;"><i class="far fa-heart fa-sm" id="heart "></i>
-                        Add to bag</a>
-                    <a href="#" class="btn btn-bag" style="border: 1px solid;background: #41929B; color: #fff;"><i class="fa fa-shopping-bag " id="heart "></i>
-                            Whishlist</a>
-                </div>
-            </div>
-        </div>    
+        </div>
     </div>
 </div>
-
-
-
-
 
 {% endblock %}

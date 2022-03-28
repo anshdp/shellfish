@@ -1,0 +1,103 @@
+{% extends 'seller_dashboard.html' %} {% block content %}{% load static %}
+<div class="container">
+    <br>
+    <div class="row">
+        {% for i in products %}
+        <div class="card mb-4 m-2 p-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="/craft_seller/media/{{i.fishImage}}" alt="..." height="200" width="200">
+                </div>
+                <div class="col-md-8 p-5">
+                    <div class="card-body">
+                        <h5 class="card-title">Fish Name : {{i.fishName}}</h5>
+                        <p class="card-text">Price : {{i.fishPrice}}</p>
+                        <p class="card-text">Discount Price : {{i.fishDiscountPrice}}</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <button class="btn btn-outline-danger" style="width: 100px;" onclick="update_product(' {{i.id}} ')"> <i class="far fa-heart fa-sm " id="heart "></i>Edit </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="btn btn-outline-danger" style="width: 150px;" onclick="delete_product(' {{i.id}} ')"> <i class="far fa-heart fa-sm " id="heart "></i>Delete </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/delete_product.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/update_product.js' %}"></script>
+
+{% endblock %}
+
+
+
+<!-- Button trigger modal
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Edit Product</button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        .......................
+                                        <div class="row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputEmail4">Fish Name</label>
+                                                <input type="text" class="form-control" id="inputEmail4" name="name">
+                                            </div>
+                                            <div class="form-group col-md-8">
+                                                <label for="inputCategory">Category</label>
+                                                <input type="text" class="form-control" id="inputCategory" name="category">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputAddress2">Price</label>
+                                                <input type="number" class="form-control" id="inputAddress2" placeholder="Rs" name="price">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputAddress2">Discount Price</label>
+                                                <input type="number" class="form-control" id="inputAddress2" placeholder="Rs" name="discount_price">
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="inputCraft">Color</label>
+                                                <input type="text" class="form-control" id="inputCraft" name="color">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputMaterial">Quantity</label>
+                                                <input type="text" class="form-control" id="inputMaterial" name="quantity">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="exampleFormControlTextarea1">Fish Description</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="description"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleFormControlFile1">Add product image</label>
+                                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                                        </div>
+                                        ........................
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-outline-danger" style="width: 215px;" onclick="update_product(' {{i.id}} ')"> <i class="far fa-heart fa-sm " id="heart "></i>Edit Product</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
